@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>نتيجة الطالب</title>
+    <style>
+        body { font-family: Arial, sans-serif; direction: rtl; background-color: #f9f9f9; text-align: center; }
+        table { margin: auto; border-collapse: collapse; width: 60%; background-color: #fff; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .message {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>البحث عن نتيجة الطالب</h2>
+    <form method="post">
+        <input type="text" name="student_id" placeholder="ادخل رقم الجلوس" required>
+        <input type="password" name="password" placeholder="ادخل كلمة السر" required>
+        <button type="submit">بحث</button>
+    </form>
+
+    {% if result is string %}
+        <div class="message">{{ result }}</div>
+    {% elif result %}
+        <h3>نتيجة الطالب</h3>
+        <table>
+            <tr><th>الاسم</th><td>{{ result['الاسم'] }}</td></tr>
+            <tr><th>رقم الجلوس</th><td>{{ result['رقم الجلوس'] }}</td></tr>
+            <tr><th>القرآن الكريم</th><td>{{ result['القران الكريم'] }}</td></tr>
+            <tr><th>التربية الإسلامية</th><td>{{ result['التربية الإسلامية'] }}</td></tr>
+            <tr><th>اللغة العربية</th><td>{{ result['اللغة العربية'] }}</td></tr>
+            <tr><th>الرياضيات</th><td>{{ result['رياضيات'] }}</td></tr>
+            <tr><th>العلوم</th><td>{{ result['علوم'] }}</td></tr>
+            <tr><th>الاجتماعيات</th><td>{{ result['الاجتماعيات'] }}</td></tr>
+            <tr><th>المجموع</th><td>{{ result['المجموع'] }}</td></tr>
+            <tr><th>التقدير</th><td>{{ result['التقدير'] }}</td></tr>
+        </table>
+    {% endif %}
+
+</body>
+</html>
